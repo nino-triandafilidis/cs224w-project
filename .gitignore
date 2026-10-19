@@ -1,0 +1,24 @@
+# JTH data (CC BY-NC 4.0): download from Zenodo, never commit
+data/
+
+# LaTeX build output
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.tdo
+main.pdf
+
+# Python
+__pycache__/
+.venv/
+
+# Claude Code worktrees
+.claude/worktrees/
+
+.DS_Store
