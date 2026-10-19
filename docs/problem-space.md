@@ -199,6 +199,40 @@ No public source covers industry careers with both named employers and named sch
 | **DOL prevailing-wage records** | About 242K determinations a year: job title, employer, requirements, the employer's suggested occupation code, and the code assigned by agency staff | Pass on the job side only | Public domain | No duties text |
 | **Analogues** (OpenReview review decisions, Wikipedia admin elections) | Real like/pass decisions about people | Fail or partial | Varies; OpenReview's terms restrict reuse | Not recruiting. Heavily used in prior work |
 
+### Links to the sources
+
+- **SEC IAPD adviser feed**
+  - Download page: https://adviserinfo.sec.gov/compilation
+  - Current file list: https://reports.adviserinfo.sec.gov/reports/CompilationReports/CompilationReports.manifest.json
+  - Archived copies, 2016–2019: https://web.archive.org/cdx/search/cdx?url=adviserinfo.sec.gov/IAPD/Content/BulkFeed/&matchType=prefix
+  - Archived copies, 2022 onward: https://web.archive.org/cdx/search/cdx?url=reports.adviserinfo.sec.gov/reports/CompilationReports/&matchType=prefix
+  - SEC reuse statement: https://www.sec.gov/privacy
+  - Egan, Matvos & Seru adviser panel (on request, non-commercial): https://eganmatvoserru.stanford.edu/index.php/download-adviser-level-data/
+- **ORCID Public Data File**
+  - Annual files: https://info.orcid.org/documentation/features/annual-data-files/
+  - BigQuery copy: https://info.orcid.org/orcid-public-data-file-on-google-big-query/
+  - Use policy: https://info.orcid.org/public-data-file-use-policy/
+  - Record format: https://info.orcid.org/documentation/integration-guide/orcid-record/
+- **OpenAlex**
+  - Licence (CC0): https://openalex.s3.amazonaws.com/LICENSE.txt
+  - Author records: https://help.openalex.org/api-entities/authors/author-object
+- **US DOL PERM and prevailing-wage disclosure files**
+  - Download page: https://www.dol.gov/agencies/eta/foreign-labor/performance
+  - PERM old-form layout: https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/PERM_Record_Layout_FY2022_Q4.pdf
+  - Prevailing-wage layout: https://www.dol.gov/sites/dolgov/files/ETA/oflc/pdfs/FY26Q3/PW_Record_Layout_FY2026_Q3.pdf
+- **CMS Doctors & Clinicians** (National Downloadable File): https://data.cms.gov/provider-data/dataset/mj5m-pzi6
+- **Wikidata dumps**: https://www.wikidata.org/wiki/Wikidata:Database_download
+- **Analogues**
+  - ICLR on OpenReview (berenslab dataset): https://github.com/berenslab/iclr-dataset
+  - OpenReview terms: https://openreview.net/legal/terms
+  - Wikipedia admin elections (SNAP wiki-RfA): https://snap.stanford.edu/data/wiki-RfA.html
+- **Taxonomies**
+  - ESCO: https://esco.ec.europa.eu/en/use-esco/download
+  - O*NET: https://www.onetcenter.org/database.html
+- **Prior work cited above**
+  - Dies, Liu & Eliassi-Rad, faculty placement from co-authorship networks: https://arxiv.org/abs/2507.14696
+  - JobXMLC (job→skill GNN): https://aclanthology.org/2023.findings-eacl.163
+
 **IAPD survivorship check (18 Oct 2026).** Each day's feed lists current registrants only: every record in samples from the 2026 and 2019 files has a current employer with an active status. The Internet Archive holds full copies of the individual feed from 2016 (Jun, Oct, Nov, Dec), 2017 (Feb, May), 2018 (Mar, Sep), 2019 (Mar), 2022 (Feb, Nov), 2024 (Sep) and 2025 (Jul), and SEC serves the current one. A sample of the March 2019 copy has the same format. Each snapshot is a census of who was registered on that date. So:
 
 - Leaving the industry is observable as disappearing between two snapshots, known to within the gap between them; the gap from 2019 to 2022 is about three years.
