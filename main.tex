@@ -42,7 +42,7 @@
 
 \textbf{Task.} On a cut-off date, for every registered adviser, predict whether they move to a different firm within the next 12 months, using only what was known on that date. Firm changes caused by mergers or rebrands (many advisers switching between the same two firms at once) and people who leave the industry are excluded. We use several cut-off dates and split them by time into training, validation and test.
 
-\textbf{Metric.} Only 4--5\% of advisers move in a year, so we report the hit rate among the top 1\% of advisers ranked by the model (how many of the people a recruiter would call actually move) and PR-AUC, always next to the base rate.
+\textbf{Metric.} Only 4--5\% of advisers move in a year, so accuracy is uninformative. Our main metric is PR-AUC (average precision), which rewards ranking true movers ahead of others; a random ranking scores the base rate, so we report it next to the base rate. We also report ROC-AUC, which does not depend on the base rate and is comparable across cut-off dates. Each step of the planned evaluation (Section~2) is compared with the previous one by the paired difference in PR-AUC over several test cut-offs, with bootstrap confidence intervals resampled by firm.
 
 \textbf{Why this dataset.} It is the only public source we found with real, dated career moves between named employers at scale. Recruiting datasets with candidate histories are private or carry synthetic or LLM-generated fields. It also defines colleagues exactly: advisers at the same firm and branch at the same time.
 
@@ -89,7 +89,7 @@ where $\mathbf{h}^{(0)}$ is a linear projection of node features. A linear head 
 
 \textbf{Why it fits.} Whether someone moves may depend on their network: colleagues at the same branch leaving, former colleagues who have already moved, and firms losing staff. GraphSAGE aggregates information from neighbours over several hops, so it can pick up these patterns, and it is inductive, so it handles advisers and firms that are new at each cut-off date.
 
-\textbf{Planned evaluation.} We ask whether an adviser's network predicts moves beyond their own record, and whether graph ML is needed to capture it, in steps: tenure rules; gradient boosting~\citep{ke2017lightgbm} on the adviser's own record; the same plus hand-built network features; and the GNN. Removing edges by type (current branch, former colleagues, firm) shows which relationships carry the signal. A temporal GNN is a stretch goal.
+\textbf{Planned evaluation.} We ask whether an adviser's network predicts moves beyond their own record, and whether graph ML is needed to capture it, in steps: tenure rules (a stand-in for the heuristics a recruiter would apply by hand); gradient boosting~\citep{ke2017lightgbm} on the adviser's own record; the same plus hand-built network features; and the GNN. Removing edges by type (current branch, former colleagues, firm) shows which relationships carry the signal. A temporal GNN is a stretch goal.
 
 {\small
 \bibliographystyle{plainnat}
