@@ -158,3 +158,11 @@ The JTH plan above is **dropped**. JTH has no full resumes (no employer or schoo
   - **Comparing steps:** the paired difference in PR-AUC between consecutive steps (B1 → B2 → B3 → GNN), over several test cut-offs, with bootstrap confidence intervals resampled by firm, since colleagues are not independent. The edge ablation is measured the same way. Gains are also broken down by segment, e.g. advisers whose colleagues recently left.
   - **Rejected: the top-1% hit rate as a headline metric.** It implied that recruiters call the top 1% of all advisers: about 4,000 people nationwide, which no recruiter does. The proposal must not suggest it. Q32's top-1% figures stay as a record of the signal check only.
   - **B1 framing:** tenure rules are described in the proposal as a stand-in for the heuristics a recruiter would apply by hand.
+
+## Cut-off dates (1 Nov)
+
+- **Q36. Cut-offs only where the whole 12-month label window is covered by snapshots.** The window must fall inside snapshot coverage. When an adviser drops out of the registry, we can only tell whether they moved firms or left the industry if a snapshot sees them soon after.
+  - **Training:** cut-offs from 2016-06 to about 2018-03, so each window ends by the 2019-03-25 snapshot.
+  - **Validation and test:** cut-offs from 2022-02-10 to about 2025-10, so each window ends by the 2026-10-17 snapshot. Validation is the earlier part (about 2022), test the later part (2023–2025). The model trains on the past and is scored on the future.
+  - **Gap cut-offs (mid-2018 to 2021) are not used for now.** Their windows reach into the 2019-03 to 2022-02 gap, where only advisers still registered in 2022 can be traced, which biases the labels. Whether they are worth rebuilding is decided after the milestone.
+  - Remaining caveat: there is no snapshot between 2022-11-09 and 2024-09-22, so advisers who vanish in that stretch are unobserved and excluded under Q29.
