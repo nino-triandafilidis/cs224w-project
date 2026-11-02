@@ -1,26 +1,15 @@
-# CS224W project: cold-start candidate ranking with heterogeneous GNNs
+# CS224W project: predicting adviser job moves with heterogeneous GNNs
 
-Project type 1 (real-world application of GNNs). Data: [JTH — Job Tracking History](https://zenodo.org/records/21390581) (CC BY-NC 4.0, Romero et al., RecSys '26).
+Project type 1 (real-world application of GNNs). On a cut-off date, predict which registered US investment adviser representatives move to a different firm within 12 months, using their career record and professional network. Data: the SEC's [Investment Adviser Public Disclosure (IAPD)](https://adviserinfo.sec.gov/) registry, rebuilt from 14 snapshots (2016–2026).
 
 ## Layout
 
 - `main.tex`, `neurips_2022.sty`, `references.bib` — proposal (NeurIPS'22 style). Compiles in Overleaf as-is.
-- `analysis/jth_stats.py` — recomputes every statistic quoted in the proposal.
-- `data/` — JTH CSVs, git-ignored.
-- `docs/course-instructions.md` — official CS224W project instructions (Project 1 excerpt, pulled 2026-10-18).
-
-## Get the data
-
-```bash
-mkdir -p data && for f in candidates.csv jobs.csv history.csv dataset_card.md; do curl -L -o "data/$f" "https://zenodo.org/records/21390581/files/$f?download=1"; done
-```
-
-## Reproduce the numbers / build the PDF
-
-```bash
-python analysis/jth_stats.py data
-latexmk -pdf main.tex
-```
+- `dataset/iapd/` — derived tables (roster, spells, moves) and the raw-source manifest; see its README.
+- `analysis/iapd_parse.py`, `analysis/iapd_careers.py` — rebuild the derived tables from the raw feeds.
+- `analysis/iapd_signal_check.py` — preliminary baseline signal check (DECISIONS.md Q32).
+- `DECISIONS.md` — project decisions; `TODO.md` — open work.
+- `docs/course-instructions.md` — official CS224W project instructions; `docs/proposal-feedback.md` — feedback on the proposal.
 
 ## Deadlines
 
