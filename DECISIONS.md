@@ -152,3 +152,11 @@ The JTH plan above is **dropped**. JTH has no full resumes (no employer or schoo
 - **Q32. Preliminary signal check: left out of the proposal.** Cut-off 2018-03-26, 312K labelled advisers, base rate 4.65%. PR-AUC: B1 0.074, B2 0.087, B3 0.094. Top-1% hit rate: B2 13.5%, B3 13.9%. This is one split with no confidence intervals: a small network effect, not yet known to be real.
 - **Q33. Publishing.** The processed tables are committed to the repo, and names may be kept. No ethics section in the proposal.
 - **Q34. Sequencing.** Most dataset work (cleaning, merger detection, cut-off design, branch tables) waits until after the proposal is submitted on 20 Oct.
+
+## Cut-off dates (1 Nov)
+
+- **Q35. Cut-offs only where the whole 12-month label window is covered by snapshots.** The window must fall inside snapshot coverage. When an adviser drops out of the registry, we can only tell whether they moved firms or left the industry if a snapshot sees them soon after.
+  - **Training:** cut-offs from 2016-06 to about 2018-03, so each window ends by the 2019-03-25 snapshot.
+  - **Validation and test:** cut-offs from 2022-02-10 to about 2025-10, so each window ends by the 2026-10-17 snapshot. Validation is the earlier part (about 2022), test the later part (2023–2025). The model trains on the past and is scored on the future.
+  - **Gap cut-offs (mid-2018 to 2021) are not used for now.** Their windows reach into the 2019-03 to 2022-02 gap, where only advisers still registered in 2022 can be traced, which biases the labels. Whether they are worth rebuilding is decided after the milestone.
+  - Remaining caveat: there is no snapshot between 2022-11-09 and 2024-09-22, so advisers who vanish in that stretch are unobserved and excluded under Q29.
