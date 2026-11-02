@@ -145,10 +145,16 @@ The JTH plan above is **dropped**. JTH has no full resumes (no employer or schoo
 - **Q31. Novelty: one question, answered in steps.**
   - *Question:* does an adviser's professional network (current branch colleagues, former colleagues, firm-level departures) predict who moves next beyond their own career record, and do you need graph ML to capture it?
   - *(1) A new public benchmark:* the first graph-ML formulation of job-move prediction on public regulatory career records, rebuilt from 14 snapshots without survivorship bias and released with code. Prior work on adviser mobility is descriptive economics.
-  - *(2) The answer in steps:* B2 (the adviser's own record, gradient boosting) → B3 (plus hand-built network features) → heterogeneous GraphSAGE (the network learned from the graph). B1 (tenure rules) is the floor.
+  - *(2) The answer in steps:* B2 (the adviser's own record, gradient boosting) → B3 (plus hand-built network features) → heterogeneous GraphSAGE (the network learned from the graph). B1 (tenure rules, a stand-in for the heuristics a recruiter would apply by hand) is the floor.
   - *(3) Which relationships matter:* edge ablation removing current-branch, former-colleague and firm edges.
-  - Metrics: top-1% hit rate and PR-AUC, always next to the base rate and averaged across test cut-offs.
+  - Metrics: PR-AUC (main) and ROC-AUC, with paired step-by-step differences; see Q35.
   - A temporal GNN is a stretch goal. The "fading signal" analysis is dropped.
 - **Q32. Preliminary signal check: left out of the proposal.** Cut-off 2018-03-26, 312K labelled advisers, base rate 4.65%. PR-AUC: B1 0.074, B2 0.087, B3 0.094. Top-1% hit rate: B2 13.5%, B3 13.9%. This is one split with no confidence intervals: a small network effect, not yet known to be real.
 - **Q33. Publishing.** The processed tables are committed to the repo, and names may be kept. No ethics section in the proposal.
 - **Q34. Sequencing.** Most dataset work (cleaning, merger detection, cut-off design, branch tables) waits until after the proposal is submitted on 20 Oct.
+- **Q35. Metrics (19 Oct): PR-AUC and ROC-AUC, compared step by step.** This supersedes the metrics line in Q31.
+  - **Main metric: PR-AUC (average precision).** Only 4–5% of advisers move in a year, so accuracy is uninformative. PR-AUC rewards ranking true movers ahead of others, with no cut-off to choose, and a random ranking scores the base rate. It is reported next to the base rate.
+  - **Secondary: ROC-AUC.** It does not depend on the base rate, which shifts between cut-off dates, so it is the fairer number for comparing across cut-offs.
+  - **Comparing steps:** the paired difference in PR-AUC between consecutive steps (B1 → B2 → B3 → GNN), over several test cut-offs, with bootstrap confidence intervals resampled by firm, since colleagues are not independent. The edge ablation is measured the same way. Gains are also broken down by segment, e.g. advisers whose colleagues recently left.
+  - **Rejected: the top-1% hit rate as a headline metric.** It implied that recruiters call the top 1% of all advisers: about 4,000 people nationwide, which no recruiter does. The proposal must not suggest it. Q32's top-1% figures stay as a record of the signal check only.
+  - **B1 framing:** tenure rules are described in the proposal as a stand-in for the heuristics a recruiter would apply by hand.
